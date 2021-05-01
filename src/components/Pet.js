@@ -2,6 +2,21 @@ import React from "react";
 
 class Pet extends React.Component {
   // disable button when is clicked onAdopted
+  isAdopted = () => {
+    if (this.props.pet.isAdopted) {
+      return <button className="ui disabled button">Already adopted</button>;
+    } else {
+      return (
+        <button
+          className="ui primary button"
+          onClick={() => this.props.onAdoptPet(this.props.pet.id)}
+        >
+          Adopt
+        </button>
+      );
+    }
+  };
+
   render() {
     return (
       <div className="card">
@@ -19,18 +34,7 @@ class Pet extends React.Component {
             <p>Weight: {this.props.pet.weight} pound(s)</p>
           </div>
         </div>
-        <div className="extra content">
-          {this.props.pet.isAdopted ? (
-            <button className="ui disabled button">Already adopted</button>
-          ) : (
-            <button
-              className="ui primary button"
-              onClick={() => this.props.onAdoptPet(this.props.pet.id)}
-            >
-              Adopt pet
-            </button>
-          )}
-        </div>
+        <div className="extra content">{this.isAdopted()}</div>
       </div>
     );
   }
