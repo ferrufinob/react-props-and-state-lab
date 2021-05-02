@@ -50,13 +50,20 @@ class App extends React.Component {
     // take in an id for pet
     // find matching pet in state.pets
     // set the isAdopted property to true
-    const pets = this.state.pets.map((pet) => {
-      return pet.id === id
-        ? { ...pet, isAdopted: true }
-        : { ...pet, isAdopted: false };
+    this.setState((prevState) => {
+      const updatedPets = prevState.pets.map((pet) => {
+        if (pet.id === id) {
+          return {
+            ...pet,
+            isAdopted: !pet.isAdopted,
+          };
+        }
+        return pet;
+      });
+      return {
+        pets: updatedPets,
+      };
     });
-
-    this.setState({ pets: pets });
   };
 
   render() {
