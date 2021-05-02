@@ -11,6 +11,7 @@ class Pet extends React.Component {
           className="ui primary button"
           onClick={() => this.props.onAdoptPet(this.props.pet.id)}
         >
+          {" "}
           Adopt
         </button>
       );
@@ -18,6 +19,7 @@ class Pet extends React.Component {
   };
 
   render() {
+    console.log("is adopted?", this.props.pet.name, this.props.pet.isAdopted);
     return (
       <div className="card">
         <div className="content">

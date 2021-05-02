@@ -8,13 +8,8 @@ class PetBrowser extends React.Component {
     const pets = this.props.pets.map((pet) => (
       <Pet pet={pet} key={pet.id} onAdoptPet={this.props.onAdoptPet} />
     ));
-    console.log(pets);
-    return (
-      <div className="ui cards">
-        PET COMPONENT SHOULD GO HERE
-        {pets}
-      </div>
-    );
+    console.log("in pet browser", pets);
+    return <div className="ui cards">{pets}</div>;
   }
 }
 

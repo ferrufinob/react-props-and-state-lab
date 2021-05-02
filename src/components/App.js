@@ -20,11 +20,12 @@ class App extends React.Component {
     this.setState(
       {
         filters: {
+          // make a copy
           ...this.state.filters,
           type: e.target.value,
         },
       },
-      () => console.log(this.state.filters.type)
+      () => console.log("in filter", this.state.filters.type)
     );
   };
 
@@ -40,7 +41,9 @@ class App extends React.Component {
 
     fetch(url)
       .then((resp) => resp.json())
-      .then((data) => this.setState({ pets: data }));
+      .then((data) =>
+        this.setState({ pets: data }, () => console.log("in fetch", this.state))
+      );
   };
 
   onAdoptPet = (id) => {
